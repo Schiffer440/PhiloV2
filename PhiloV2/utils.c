@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:24:35 by adugain           #+#    #+#             */
-/*   Updated: 2023/10/30 16:19:22 by adugain          ###   ########.fr       */
+/*   Updated: 2023/10/31 16:09:47 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	check_args(char **av)
 	{
 		if (ft_atoi(av[i]) <= 0)
 			return (1);
+		if (ft_strncmp(av[i], "2147483647", 10) == 0)
+			return (1);
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 int	ft_atoi(const char *str)
@@ -70,4 +72,25 @@ void	print_message(char *str, t_philo *philo, int index)
 	if (check_vitals(philo) == 0)
 		printf("%ld %d %s\n", time, index, str);
 	pthread_mutex_unlock(philo->write_lock);
+}
+
+void	ft_usleep(uint64_t time, t_philo *philo)
+{
+	uint64_t	begin;
+	uint64_t	now;
+
+	now = get_time();
+	begin = now;
+	while (now - begin < time)
+	{
+		pthread_mutex_lock(philo->dead_lock);
+		if (*philo->dead == 1)
+		{
+			pthread_mutex_unlock(philo->dead_lock);
+			return ;
+		}
+		pthread_mutex_unlock(philo->dead_lock);
+		usleep(1000);
+		now = get_time();
+	}
 }

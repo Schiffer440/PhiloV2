@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:55:42 by adugain           #+#    #+#             */
-/*   Updated: 2023/10/31 16:12:08 by adugain          ###   ########.fr       */
+/*   Updated: 2023/10/31 16:35:53 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_prog
 }t_prog;
 
 uint64_t	get_time(void);
-int			ft_atoi(const char *str);
+long		ft_atol(const char *str);
 int			init_prog(t_prog *prog, char **av);
 int			init_philo_fork(t_prog *prog, t_philo *philo, char **av);
 int			check_args(char **av);

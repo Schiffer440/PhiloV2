@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:04:44 by adugain           #+#    #+#             */
-/*   Updated: 2023/10/31 16:01:35 by adugain          ###   ########.fr       */
+/*   Updated: 2023/10/31 16:38:58 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 			return (printf("Philo or fork init error...\n"));
 		prog.start_time = get_time();
 		if (prog.nb_of_philo != 1)
-			philosophers(&prog, ft_atoi(av[1]));
+			philosophers(&prog, ft_atol(av[1]));
 		else
 		{
 			print_message("has taken a fork", &prog.philo[0], prog.philo[0].id);

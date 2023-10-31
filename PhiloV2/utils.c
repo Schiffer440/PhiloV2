@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:24:35 by adugain           #+#    #+#             */
-/*   Updated: 2023/10/31 16:09:47 by adugain          ###   ########.fr       */
+/*   Updated: 2023/10/31 16:40:24 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ int	check_args(char **av)
 	i = 1;
 	while (av[i])
 	{
-		if (ft_atoi(av[i]) <= 0)
+		if (ft_atol(av[1]) > 200)
 			return (1);
-		if (ft_strncmp(av[i], "2147483647", 10) == 0)
+		if (ft_atol(av[i]) <= 0 || ft_atol(av[i]) > INT_MAX)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
-	int	i;
-	int	nb;
-	int	sign;
+	int		i;
+	long	nb;
+	long	sign;
 
 	sign = 1;
 	i = 0;

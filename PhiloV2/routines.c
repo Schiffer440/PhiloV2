@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 15:01:25 by adugain           #+#    #+#             */
-/*   Updated: 2023/10/31 16:09:21 by adugain          ###   ########.fr       */
+/*   Updated: 2023/11/03 16:17:27 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
 		usleep(5000);
-	while (1)
+	while (check_vitals(philo) == 0)
 	{
-		if (check_vitals(philo) != 0)
-			break ;
 		eat_r(philo);
 		sleep_r(philo);
 		think_r(philo);

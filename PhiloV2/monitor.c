@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:45:45 by adugain           #+#    #+#             */
-/*   Updated: 2023/10/31 16:02:33 by adugain          ###   ########.fr       */
+/*   Updated: 2023/11/03 16:29:33 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ static int	is_dead(t_philo *philo)
 	uint64_t	time;
 
 	time = get_time() - philo->prog->start_time;
+	// printf("Time= %ld\nlast_meal= %ld\nDeathtime=%ld\n", time, philo->last_meal, philo->prog->death_time);
 	pthread_mutex_lock(philo->eat_lock);
 	if ((time - philo->last_meal) >= \
-	philo->prog->death_time && philo->eating == 0)
+	philo->prog->death_time)
 		return (pthread_mutex_unlock(philo->eat_lock), 1);
 	pthread_mutex_unlock(philo->eat_lock);
 	return (0);
